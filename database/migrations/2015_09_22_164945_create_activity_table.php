@@ -15,10 +15,10 @@ class CreateActivityTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
             $table->integer('subject_id')->index();
             $table->string('subject_type')->index();
             $table->integer('user_id')->index();
+            $table->integer('points')->unsigned();
             $table->timestamps();
         });
     }

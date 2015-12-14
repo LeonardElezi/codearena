@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Nathanmac\Utilities\Parser\Parser;
 use Teepluss\Restable\Contracts\Restable;
 
@@ -27,6 +28,7 @@ class ApiRefactorHistoryController extends Controller {
 
 	public function parseHistory(Request $request)
     {
+        Log::info("ParseHistory: received request ".$request);
         $this->user = Auth::user();
 
         $xmlContent = $request->getContent();
@@ -35,36 +37,30 @@ class ApiRefactorHistoryController extends Controller {
 
         $parsed = $parser->xml($xmlContent);
 
-        $refactorings = $parsed['refactoring'];
+        $history = $parsed['refactoring'];
 
-        foreach($refactorings as $ref)
-        {
-            // save refactoring
-            $refactoring = $this->saveRefactoring($ref);
+        // save refactoring
+        $refactoring = $this->saveRefactoring($history);
 
-            // update points
-            $rt = $refactoring->type()->first();
+        // update points
+        $rt = $refactoring->type()->first();
 
-            $this->user->points += $rt->points;
+        $this->user->points += $rt->points;
 
-
-            // update level
-            $level = Level::where('range', '>', $this->user->points)
+        // update level
+        $level = Level::where('range', '>', $this->user->points)
                         ->orderBy('level', 'asc')
                         ->first();
 
-            $this->user->level = $level->level;
+        $this->user->level = $level->level;
 
 
-            $this->user->save();
+        $this->user->save();
 
-            // TODO update badges
+        // TODO update badges
 
-            // TODO progress bar
+        // TODO progress bar
 
-
-
-        }
 
         // update rank here
         $users = User::where('id', '>', '0')->orderBy('points', 'desc')->get();
@@ -85,6 +81,8 @@ class ApiRefactorHistoryController extends Controller {
 
         $ref->ref_id = $raw['@attributes']['id'];
         $ref->eclipse_timestamp = $raw['timestamp'];
+        $ref->eclipse_date = $raw['date'];
+        $ref->project = $raw['project'];
 
         $results = DB::select(DB::raw("SELECT id FROM refactoring_types WHERE :desc LIKE CONCAT('%', description, '%')"), array(
             'desc' => $ref['description'],

@@ -35,8 +35,9 @@ elixir(function(mix) {
         'bower_components/bootstrap/dist/js/bootstrap.js',
         'bower_components/Chart.js/Chart.js',
         'bower_components/metisMenu/dist/metisMenu.js',
+        'resources/js/soundmanager2.js',
         'resources/js/sb-admin-2.js',
-        'resources/js/frontend.js'
+        'resources/js/frontend.js',
     ], 'public/assets/scripts/frontend.js', './');
 });
 

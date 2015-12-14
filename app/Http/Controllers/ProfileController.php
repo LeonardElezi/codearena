@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Ide;
@@ -31,7 +33,17 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('profile.profile', compact('user'));
+        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $disable = false;
+        return view('profile.profile', compact('user', 'activities', 'disable'));
+    }
+
+    public function showUserProfile($id)
+    {
+        $user = User::findOrFail($id);
+        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $disable = true;
+        return view('profile.profile', compact('user', 'activities', 'disable'));
     }
 
     /**

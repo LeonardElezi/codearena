@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/points">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -42,9 +42,9 @@
                 <a href="#">
                     <div class="panel-footer">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success progress" role="progressbar" aria-valuenow="40"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                40%
+                            <div class="progress-bar progress-bar-success progress" role="progressbar" aria-valuenow="{{ $levelProgress }}"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:{{ $levelProgress }}%">
+                                {{ $levelProgress }}%
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">15</div>
+                            <div class="huge">{{ $user->rank }}</div>
                             <div>Global ranking!</div>
                         </div>
                     </div>
@@ -110,11 +110,11 @@
             <ul class="timeline">
                 @foreach($activities as $key=>$a)
                     <li @if($key%2!=0) class="timeline-inverted"  @endif>
-                        <div class="timeline-badge"><i class="fa fa-check"></i>
+                        <div class="timeline-badge"><img id="avatar_image" src="{{ GlideImage::load($a->user->picture, ['w'=>50, 'h'=>50]) }}" alt="" id="avatar" class="center-block img-circle img-responsive">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="timeline-title">{{ $a->description }}</h4>
+                                <h4 class="timeline-title"><a href="/profile/{{ $a->user->id }}">{{ $a->user->first_name." ".$a->user->last_name }}</a>{{" ".$a->name }}</h4>
                                 <p><small class="text-muted"><i class="fa fa-clock-o"></i> {{ $a->created_at->diffForHumans(); }}</small>
                                 </p>
                             </div>

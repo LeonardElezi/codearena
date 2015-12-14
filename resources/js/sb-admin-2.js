@@ -26,7 +26,58 @@ $(function() {
         }
     });
 
+    //// where to find flash SWFs, if needed...
+    //soundManager.url = '/assets/sounds//';
+    //
+    //soundManager.onready(function() {
+    //    soundManager.createSound({
+    //        id: 'mySound',
+    //        url: 'http://codearena.dev/assets/sounds/level_up.mp3'
+    //    });
+    //
+    //    var leveledUp = "NO";
+    //    $( "#myModal" ).attr( "leveledUp", function( i, val ) {
+    //        leveledUp = val.trim();
+    //    });
+    //
+    //    if(leveledUp === "YES"){
+    //        soundManager.play('mySound');
+    //        $('#myModal').modal('show');
+    //
+    //        $.ajaxSetup({
+    //            headers: {
+    //                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //            }
+    //        });
+    //
+    //        $.ajax({
+    //            url: "/users/levelupdate",
+    //            method: 'POST',
+    //            processData: false,
+    //            contentType: false,
+    //            cache: false,
+    //            success: function(data) {
+    //                console.log("success");
+    //            },
+    //            error: function(data) {
+    //                console.log(data);
+    //                console.log("error");
+    //            }
+    //        });
+    //    }
+    //
+    //});
+
     var url = window.location;
+    setTimeout(function () {
+        if(url.href === "http://codearena.co/" || url.href === "http://codearena.co"
+            || url.href === "http://codearena.co/profile/" || url.href === "http://codearena.co/profile"
+            || url.href === "http://codearena.co/leaderboard/" || url.href === "http://codearena.co/leaderboard")
+        {
+            url.reload();
+        }
+    }, 150 * 1000);
+
     var element = $('ul.nav a').filter(function() {
         return this.href == url || url.href.indexOf(this.href) == 0;
     }).addClass('active').parent().parent().addClass('in').parent();

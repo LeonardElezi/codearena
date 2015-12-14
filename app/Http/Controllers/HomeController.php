@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Level;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -44,11 +45,21 @@ class HomeController extends Controller {
         $usersAfter = DB::table('users')->where('points', '<=', $user->points)->orderBy('points', 'desc')->take(3);
         $localLeaderboard = DB::table('users')->where('points', '>', $user->points)->orderBy('points', 'desc')->take(2)->union($usersAfter)->get();
 
-        $activities = Activity::where('id', '>', '0')->orderBy('created_at', 'desc')->get();
+       // $activities = Activity::where('id', '>', '0')->orderBy('created_at', 'desc')->get();
+
+        $activities = Activity::whereRaw('user_id IN (SELECT uf.follows_id FROM user_follows uf WHERE uf.user_id=:userID) || user_id=:userID2', array(
+            'userID' => $user->id,
+            'userID2' => $user->id,
+        ))->orderBy('created_at', 'desc')->get();
+
+
+        $level = Level::where('level', $user->level)->first();
+
+        $levelProgress = round((($user->points-$level->minrange)/($level->maxrange-$level->minrange))*100);
 
 
 
-        return view('home', compact('user', 'topTenLeaderboard', 'localLeaderboard', 'activities'));
+        return view('home', compact('user', 'topTenLeaderboard', 'localLeaderboard', 'activities', 'levelProgress'));
 	}
 
 }

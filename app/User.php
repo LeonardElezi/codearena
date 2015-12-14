@@ -80,9 +80,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\User', 'user_block', 'block_id', 'user_id');
     }
 
-    public function hasBlocked(User $user)
+    public function hasBlocked(User $u)
     {
-        return count($user->blocked()->where('block_id', $user->id)->get()) > 0;
+        return count($this->blocks()->where('block_id', $u->id)->get()) > 0;
+    }
+
+    public function hasFollowed(User $u)
+    {
+        return count($this->follows()->where('follows_id', $u->id)->get()) > 0;
     }
 
     public function addBlock(User $user)
@@ -120,6 +125,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function refactorings()
     {
         return $this->hasMany('App\Refactoring');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany('App\Activity');
     }
 
 
@@ -166,6 +176,30 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             ->whereUserId($userId)
             ->whereIdeId($ideId)
             ->count() > 0;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user){
+            Activity::create([
+                'subject_id' => $user->id,
+                'subject_type' => get_class($user),
+                'name' => ' joined CodeArena',
+                'user_id' => $user->id,
+                'points' => 3
+            ]);
+
+            $users = User::all();
+            foreach($users as $u)
+            {
+                if($user->id != $u->id){
+                    $user->addFollows($u);
+                    $u->addFollows($user);
+                }
+            }
+        });
     }
 
 }

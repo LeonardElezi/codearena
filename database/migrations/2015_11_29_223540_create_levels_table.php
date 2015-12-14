@@ -16,6 +16,8 @@ class CreateLevelsTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('level');
+			$table->integer('minrange');
+			$table->integer('maxrange');
 			$table->integer('range');
 			$table->timestamps();
 		});

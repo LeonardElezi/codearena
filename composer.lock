@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "568dca706446423e36265b0371c1d602",
-    "content-hash": "3566ff0e2db519db8bc6ee00ccc05de3",
+    "hash": "e7fab034befd118c83a7e39f55f925cc",
+    "content-hash": "dced7c7189f107c4c5802418de645ab4",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1271,6 +1271,53 @@
                 }
             ],
             "time": "2015-02-03 12:10:50"
+        },
+        {
+            "name": "prettus/laravel-request-logger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andersao/laravel-request-logger.git",
+                "reference": "42bbded339a61c1d42d2cbacb2c1afbaec36aa0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andersao/laravel-request-logger/zipball/42bbded339a61c1d42d2cbacb2c1afbaec36aa0c",
+                "reference": "42bbded339a61c1d42d2cbacb2c1afbaec36aa0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/http": "5.0.*",
+                "illuminate/support": "5.0.*",
+                "monolog/monolog": "~1.11"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Prettus\\RequestLogger\\": "src/Prettus/RequestLogger/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anderson Andrade",
+                    "email": "contato@andersonandra.de"
+                }
+            ],
+            "description": "HTTP request logger middleware for Laravel",
+            "keywords": [
+                "laravel",
+                "logger",
+                "request",
+                "response"
+            ],
+            "time": "2015-04-06 13:35:58"
         },
         {
             "name": "psr/http-message",
@@ -2634,7 +2681,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/15f6bb72f66df6857b957bedd09dc4fd0ace3b03",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/9c29a2fb66ef07d7b478bffae0df3b79e6b17c10",
                 "reference": "15f6bb72f66df6857b957bedd09dc4fd0ace3b03",
                 "shasum": ""
             },

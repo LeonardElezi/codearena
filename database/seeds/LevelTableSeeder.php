@@ -19,47 +19,51 @@ class LevelTableSeeder extends Seeder
     {
         DB::table('levels')->insert([
             'level' => 1,
-            'range' => 10
+            'minrange' => 1,
+            'maxrange' => 30,
+            'range' => 30
         ]);
 
         DB::table('levels')->insert([
             'level' => 2,
-            'range' => 20
+            'minrange' => 31,
+            'maxrange' => 60,
+            'range' => 30
         ]);
 
         DB::table('levels')->insert([
             'level' => 3,
+            'minrange' => 61,
+            'maxrange' => 90,
             'range' => 30
         ]);
 
         DB::table('levels')->insert([
             'level' => 4,
-            'range' => 50
+            'minrange' => 91,
+            'maxrange' => 150,
+            'range' => 60
         ]);
 
         DB::table('levels')->insert([
             'level' => 5,
-            'range' => 80
+            'minrange' => 151,
+            'maxrange' => 300,
+            'range' => 150
         ]);
 
         DB::table('levels')->insert([
             'level' => 6,
-            'range' => 120
+            'minrange' => 301,
+            'maxrange' => 600,
+            'range' => 300
         ]);
 
         DB::table('levels')->insert([
             'level' => 7,
-            'range' => 170
-        ]);
-
-        DB::table('levels')->insert([
-            'level' => 8,
-            'range' => 230
-        ]);
-
-        DB::table('levels')->insert([
-            'level' => 9,
-            'range' => 300
+            'minrange' => 601,
+            'maxrange' => 1200,
+            'range' => 600
         ]);
     }
 }

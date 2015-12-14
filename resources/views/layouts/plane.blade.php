@@ -11,6 +11,8 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport"/>
 	<meta content="" name="description"/>
 	<meta content="" name="author"/>
+    <!-- pass through the CSRF (cross-site request forgery) token -->
+    <meta name="csrf-token" content="<?php echo csrf_token() ?>" />
 
 	<link rel="stylesheet" href="{{ asset("assets/stylesheets/styles.css") }}" />
 

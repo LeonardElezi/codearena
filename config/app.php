@@ -154,7 +154,8 @@ return [
 		'Spatie\Glide\GlideServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
         'Teepluss\Restable\RestableServiceProvider',
-        'Nathanmac\Utilities\Parser\ParserServiceProvider'
+        'Nathanmac\Utilities\Parser\ParserServiceProvider',
+		'Prettus\RequestLogger\Providers\LoggerServiceProvider',
 	],
 
 	/*

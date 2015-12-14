@@ -28,7 +28,7 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Change method signature',
+            'description' => 'Change method',
             'points' => 1,
         ]);
 
@@ -53,7 +53,7 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Convert local variable to field',
+            'description' => 'Convert local variable',
             'points' => 1,
         ]);
 
@@ -63,7 +63,7 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Move type to new file',
+            'description' => 'Move type',
             'points' => 2,
         ]);
 
@@ -74,7 +74,7 @@ class RefactoringTypeSeeder extends Seeder
 
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Extract super class',
+            'description' => 'Extract superclass',
             'points' => 3,
         ]);
 
@@ -84,7 +84,7 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'User supertype where possible',
+            'description' => 'Use Supertype',
             'points' => 1,
         ]);
 
@@ -94,17 +94,17 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Push up',
+            'description' => 'Pull up',
             'points' => 1,
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Extract class',
+            'description' => 'Extract Class',
             'points' => 3,
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Introduce parameter object',
+            'description' => 'Introduce Parameter Object',
             'points' => 1,
         ]);
 
@@ -114,7 +114,7 @@ class RefactoringTypeSeeder extends Seeder
         ]);
 
         DB::table('refactoring_types')->insert([
-            'description' => 'Introduce faction',
+            'description' => 'Introduce factory',
             'points' => 1,
         ]);
 

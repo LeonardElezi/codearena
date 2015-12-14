@@ -15,11 +15,13 @@ class CreateRefactoringsTable extends Migration {
 		Schema::create('refactorings', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('description');
+			$table->string('description');
             $table->integer('ref_id');
             $table->integer('user_id')->unsigned();
             $table->integer('refactoring_types_id')->unsigned();
             $table->timestamp('eclipse_timestamp');
+			$table->string('eclipse_date');
+			$table->string('project');
 			$table->timestamps();
 
             $table->foreign('refactoring_types_id')->references('id')->on('refactoring_types')->onDelete('cascade');

@@ -56,24 +56,28 @@ class FriendController extends Controller
 
     public function follow($id)
     {
+
         $userToFollow = User::findOrFail($id);
         $user = Auth::user();
 
-        $followed = $userToFollow->hasBlocked($user);
+        $blocked = $userToFollow->hasBlocked($user);
 
-        if($followed)
+        if($blocked)
         {
-            $msg = 'User has blocked you!';
+            $msg = 'User '.$userToFollow->first_name.' '.$userToFollow->last_name.' has blocked you!';
         } else {
-            $msg = 'Now you will be able follow '.$userToFollow->first_name.' '.$userToFollow.last_name.' activity.';
+            $msg = 'Now you will be able follow '.$userToFollow->first_name.' '.$userToFollow->last_name.'\'s activity.';
+            $user->addFollows($userToFollow);
         }
 
         $result = [
-            'is_followed' =>$followed,
+            'is_blocked' =>$blocked,
             'message' => $msg
         ];
 
-        return view('following', compact('user', 'result'));
+        $users = User::where('id', '<>', $user->id)->get();
+
+        return view('users', compact('user', 'users', 'result'));
 
     }
 

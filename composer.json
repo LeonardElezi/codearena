@@ -12,7 +12,8 @@
 		"spatie/laravel-glide": "^2.2",
 		"intervention/image": "^2.3",
 	    "teepluss/restable": "dev-master",
-	  	"Nathanmac/Parser": "3.*"
+	  	"Nathanmac/Parser": "3.*",
+		"prettus/laravel-request-logger": "^1.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

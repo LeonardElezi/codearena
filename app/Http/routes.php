@@ -14,6 +14,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/users', 'UsersController@index');
+Route::post('/users/levelupdate', 'UsersController@updateLevels');
+
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/update', 'ProfileController@update');
 Route::post('/profile/edit', 'ProfileController@edit');
@@ -26,16 +29,18 @@ Route::get('/profile/deleteuserskill', 'ProfileController@deleteUsersSkills');
 Route::get('/profile/ides', 'ProfileController@ides');
 Route::post('/profile/uploadavatar', 'ProfileController@uploadAvatar');
 Route::post('/profile/editaccount', 'ProfileController@editaccountinfo');
+Route::get('/profile/{id}', 'ProfileController@showUserProfile');
 
 Route::get('/followers/{id}', 'FriendController@listFollowers');
 Route::get('/following/{id}', 'FriendController@listFollowing');
+Route::get('/follow/{id}', 'FriendController@follow');
 Route::get('/block/{id}', 'FriendController@block');
 Route::get('/unfollow/{id}', 'FriendController@unfollow');
 
 Route::get('/leaderboard', 'LeaderboardController@index');
 Route::get('/leaderboard/{id}', 'LeaderboardController@show');
 
-
+Route::get('/points', 'PointsController@index');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -45,7 +50,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-
 
 Route::controllers([
 	'password' => 'Auth\PasswordController',
