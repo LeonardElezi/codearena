@@ -19,7 +19,8 @@ class CreateActivityTable extends Migration
             $table->string('subject_type')->index();
             $table->integer('user_id')->index();
             $table->integer('points')->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

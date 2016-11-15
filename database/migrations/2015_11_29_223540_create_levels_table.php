@@ -19,7 +19,8 @@ class CreateLevelsTable extends Migration {
 			$table->integer('minrange');
 			$table->integer('maxrange');
 			$table->integer('range');
-			$table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

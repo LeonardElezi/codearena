@@ -15,7 +15,8 @@ class CreateUserSkillTable extends Migration
         Schema::create('user_skill', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('skill_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');

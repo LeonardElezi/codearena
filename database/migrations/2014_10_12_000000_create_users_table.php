@@ -23,12 +23,13 @@ class CreateUsersTable extends Migration {
 			$table->string('picture')->default('defaultavatar.jpg');
 			$table->integer('points');
 			$table->integer('level')->default(1);
-			$table->integer('rank');
-			$table->integer('login_count');
-			$table->timestamp('last_login');
-			$table->boolean('currently_logged_in');
+			$table->integer('rank')->default(0);
+			$table->integer('login_count')->default(0);
+			$table->timestamp('last_login')->nullable();
+			$table->boolean('currently_logged_in')->default(false);
 			$table->rememberToken();
-			$table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

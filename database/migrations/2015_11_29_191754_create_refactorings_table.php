@@ -19,10 +19,11 @@ class CreateRefactoringsTable extends Migration {
             $table->integer('ref_id');
             $table->integer('user_id')->unsigned();
             $table->integer('refactoring_types_id')->unsigned();
-            $table->timestamp('eclipse_timestamp');
+            $table->timestamp('eclipse_timestamp')->nullable();
 			$table->string('eclipse_date');
 			$table->string('project');
-			$table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 
             $table->foreign('refactoring_types_id')->references('id')->on('refactoring_types')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

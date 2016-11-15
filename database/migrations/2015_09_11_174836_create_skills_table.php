@@ -16,7 +16,8 @@ class CreateSkillsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->boolean('moderated')->default(false);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
