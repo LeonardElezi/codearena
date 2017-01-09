@@ -62,4 +62,15 @@ class HomeController extends Controller {
         return view('home', compact('user', 'topTenLeaderboard', 'localLeaderboard', 'activities', 'levelProgress'));
 	}
 
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duolingo()
+    {
+
+        return view('duolingo');
+    }
+
 }

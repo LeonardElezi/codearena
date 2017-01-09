@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/duolingo', 'HomeController@duolingo');
 
 Route::get('/users', 'UsersController@index');
 Route::post('/users/levelupdate', 'UsersController@updateLevels');
