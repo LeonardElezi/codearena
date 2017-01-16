@@ -70,7 +70,51 @@ class HomeController extends Controller {
     public function duolingo()
     {
 
-        return view('duolingo');
+        return view('duohome');
+    }
+
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function chapter()
+    {
+
+        return view('duochapter');
+    }
+
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duoles1()
+    {
+
+        return view('duoles1');
+    }
+
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duoles2()
+    {
+
+        return view('duoles2');
+    }
+
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duoles3()
+    {
+
+        return view('duoles3');
     }
 
 }

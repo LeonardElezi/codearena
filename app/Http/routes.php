@@ -14,6 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/duolingo', 'HomeController@duolingo');
+Route::get('/chapter', 'HomeController@chapter');
+Route::get('/duoles1', 'HomeController@duoles1');
+Route::get('/duoles2', 'HomeController@duoles2');
+Route::get('/duoles3', 'HomeController@duoles3');
 
 Route::get('/users', 'UsersController@index');
 Route::post('/users/levelupdate', 'UsersController@updateLevels');

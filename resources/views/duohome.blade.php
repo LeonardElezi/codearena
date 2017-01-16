@@ -74,9 +74,10 @@
         <main class="main-right">
             <div id="persistent-notifications" class=""></div>
             <section class="page-main main-right">
-                <div class="tree"><a href="https://www.codearena.co/settings/direction"><span data-toggle="tooltip" title="Change language" class="flag flag-svg-small flag-dn skill-tree-header-language"></span></a><span class="skill-tree-header"><h1>Dutch skills</h1><span class="level-text">LEVEL 10</span></span>
+                <!-- TODO: Put the user level here -->
+                <div class="tree"><span class="skill-tree-header"><h1>Refactoring skills</h1><span class="level-text">LEVEL 100000000000000</span></span>
                     <ul class="skill-tree">
-                        <li class="skill-tree-row row-1"><span id="skill-2-1" class="skill-0"><a href="https://www.codearena.co/skill/dn/Basics-1" class="fade-this-in skill-badge-small skill-item" data-skill="Basics 1" style="opacity: 1;"><span class="skill-icon  small  gold"><span class="skill-icon-image skill-icon-1"></span><span class="skill-icon-strength skill-icon-strength-small  strength-5"></span></span><span class="skill-badge-name">Basics 1 <span class="lessons-left"></span></span>
+                        <li class="skill-tree-row row-1"><span id="skill-2-1" class="skill-0"><a href="https://www.codearena.co/skill/dn/Basics-1" class="fade-this-in skill-badge-small skill-item" style="opacity: 1;"><span class="skill-icon  small  gold"><span class="skill-icon-image skill-icon-1"></span><span class="skill-icon-strength skill-icon-strength-small  strength-5"></span></span><span class="skill-badge-name">Extract Method<span class="lessons-left"></span></span>
                             </a>
                             </span>
                         </li>
