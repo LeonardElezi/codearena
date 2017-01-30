@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->text('about')->nullable();
 			$table->string('picture')->default('defaultavatar.jpg');
-			$table->integer('points');
+			$table->integer('points')->default(0);
 			$table->integer('level')->default(1);
 			$table->integer('rank')->default(0);
 			$table->integer('login_count')->default(0);

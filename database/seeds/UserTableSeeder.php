@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Elezi',
             'email' => 'me@leonardelezi.com',
             'password' => bcrypt('123456'),
-            'picture' => 'defaultavatar.jpg',
+            'picture' => 'maleavatarxlarge.jpeg',
             'points' => 5
         ]);
 

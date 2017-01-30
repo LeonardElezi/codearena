@@ -130,4 +130,17 @@ class HomeController extends Controller {
         return view('duoprofile', compact('user', 'activities', 'disable'));
     }
 
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duosettingsaccount()
+    {
+        $user = Auth::user();
+        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $disable = false;
+        return view('duosettingsaccount', compact('user', 'activities', 'disable'));
+    }
+
 }
