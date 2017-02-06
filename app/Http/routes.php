@@ -19,7 +19,11 @@ Route::get('/duoles1', 'HomeController@duoles1');
 Route::get('/duoles2', 'HomeController@duoles2');
 Route::get('/duoles3', 'HomeController@duoles3');
 Route::get('/duoprofile', 'HomeController@duoprofile');
-Route::get('/duosettingsaccount', 'HomeController@duosettingsaccount');
+Route::get('/settings/account', 'SettingsController@duosettingsaccount');
+Route::get('/settings/notifications', 'SettingsController@duosettingsnotifications');
+Route::get('/settings/coach', 'SettingsController@duosettingscoach');
+Route::post('/settings/save', 'SettingsController@save');
+Route::post('/settings/uavatar', 'SettingsController@uploadProfilePicture');
 
 Route::get('/users', 'UsersController@index');
 Route::post('/users/levelupdate', 'UsersController@updateLevels');

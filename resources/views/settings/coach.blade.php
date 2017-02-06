@@ -38,7 +38,7 @@
                                 class="name">{{ $user->first_name }} {{ $user->last_name }}</span><span class="icon icon-arrow-down-white"></span></div>
                     <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
                         <li><a href="{{ url('/profile/'.$user->id) }}">Your Profile</a></li>
-                        <li><a href="https://www.duolingo.com/settings/account" class="track-click"
+                        <li><a href="{{ url('/settings/account') }}" class="track-click"
                                id="header_userdrop_settings">Settings</a></li>
                         <li><a class="track-click" id="header_userdrop_logout">Logout</a></li>
                     </ul>
@@ -69,14 +69,12 @@
             <div class="inner">
                 <div class="box-colored bg-white"><h2 class="view-profile-headline"><a
                                 href="{{ url('/profile/'.$user->id) }}" class="avatar avatar-small"
-                                title="leonardelezi"><img src="{{ GlideImage::load($user->picture, ['w'=>48, 'h'=>48]) }}"><span
+                                title="leonardelezi"><img src="{{ GlideImage::load($user->picture, ['w'=>48, 'h'=>48]) }}"/><span
                                     class="ring"></span></a> {{ $user->email }} <a
                                 href="{{ url('/profile/'.$user->id) }}" class="username">View your profile</a></h2>
                     <ul id="settings_tab" class="nav-sidebar">
-                        <li class="active"><a href="{{ url('/settings/account') }}">Account</a></li>
-                        <li><a href="{{ url('/settings/notifications') }}">Notifications</a>
-                        </li>
-                        <li><a href="{{ url('/settings/coach') }}" id="coach_tab">Coach<span
+                        <li><a href="{{ url('/settings/account') }}">Account</a></li>
+                        <li class="active"><a href="{{ url('/settings/coach') }}" id="coach_tab">Coach<span
                                         class="icon-arrow-right icon"></span></a></li>
                     </ul>
                 </div>
@@ -84,45 +82,35 @@
         </section>
         <section class="page-main main-right">
             <div id="tab-container">
-                <div id="account-content" class="settings-content">
-                    <button id="submit_button" type="submit" class="btn btn-green right" disabled="">Save changes
-                    </button>
-                    <div id="confirmation-message" class="hidden save-message">Saved!</div>
-                    <div id="error-message" class="hidden error-message">Error</div>
-                    <h1>Account settings</h1>
-                    <ul class="list-settings">
-                        <li><label class="label">Email</label>
-                            <div class="input"><input style="width: 334px;" class="large" id="email" name="email"
-                                                      size="30" type="text" value="{{ $user->email }}"></div>
-                        </li>
-                        <li><label class="label">Sound effects</label>
-                            <div class="input">
-                                <ul class="radio-buttons">
-                                    <li><label><input class="border" id="sound_effects_on" name="sound_effects"
-                                                      type="radio" value="true" checked=""> on</label></li>
-                                    <li><label><input class="border" id="sound_effects_off" name="sound_effects"
-                                                      type="radio" value="false"> off</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><label class="label">Profile picture</label>
-                            <div class="input">
-                                <div class="avatar-large left" style="margin-right: 15px;"><a
-                                            href="https://www.duolingo.com/leonardelezi" class="avatar avatar-large"><img
-                                                src="{{ GlideImage::load($user->picture, ['w'=>48, 'h'=>48]) }}"><span
-                                                class="ring"></span></a></div>
-                                <form id="avatar-upload" action="https://www.duolingo.com/avatars" method="post"
-                                      enctype="multipart/form-data"><input type="hidden" name="user_id"
-                                                                           value="60969078"><input id="image-file"
-                                                                                                   type="file"
-                                                                                                   name="image"
-                                                                                                   class=""><br>maximum
-                                    image size is 1 MB
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
+                <button id="submit_button" type="submit" class="btn btn-green right">Save changes
+                </button>
+                <div id="confirmation-message" class="hidden save-message">Saved!</div>
+                <div id="error-message" class="hidden error-message">Error</div>
+                <h1 class="with-subheading">Daily Goal settings</h1>
+                <div class="sub-text gray">Coach here! Selecting a daily goal will help you stay motivated while
+                    learning refactoring. You can change your goal at any time.
                 </div>
+                <div class="coach-settings"><span class="owl owl-coach-small left"><img src="{{ GlideImage::load('coach.png', ['w'=>200, 'h'=>200]) }}"></span><span
+                            class="coach-goal-chooser left"><ul class="goal-chooser"><li><label
+                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                            name="daily_goal" data-goal="1" type="radio"> <span
+                                            class="title">Basic</span> <span class="xp-text">1 XP per day</span></label></li><li><label
+                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                            name="daily_goal" data-goal="10" type="radio"> <span
+                                            class="title">Casual</span> <span
+                                            class="xp-text">10 XP per day</span></label></li><li><label
+                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                            name="daily_goal" data-goal="20" checked="checked" type="radio"> <span
+                                            class="title">Regular</span> <span
+                                            class="xp-text">20 XP per day</span></label></li><li><label
+                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                            name="daily_goal" data-goal="30" type="radio"> <span
+                                            class="title">Serious</span> <span
+                                            class="xp-text">30 XP per day</span></label></li><li><label
+                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                            name="daily_goal" data-goal="50" type="radio"> <span
+                                            class="title">Insane</span> <span
+                                            class="xp-text">50 XP per day</span></label></li></ul></span></div>
             </div>
         </section>
         <div class="footer-main">
@@ -149,7 +137,5 @@
         </div>
     </main>
 </div>
-
-
 </body>
 </html>

@@ -43,7 +43,7 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         $disable = true;
-        return view('profile.profile', compact('user', 'activities', 'disable'));
+        return view('profile.coprofile', compact('user', 'activities', 'disable'));
     }
 
     /**
