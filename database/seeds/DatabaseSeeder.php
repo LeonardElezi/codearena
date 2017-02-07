@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleTableSeeder');
 		$this->call('IdeTableSeeder');
 		$this->call('ProgrammingLanguageTableSeeder');
+        $this->call('DailyGoalTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('RefactoringTypeSeeder');
         $this->call('LevelTableSeeder');

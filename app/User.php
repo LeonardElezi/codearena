@@ -6,7 +6,6 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\DB;
-use Spatie\Glide\GlideImage;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -36,6 +35,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function settings()
     {
         return $this->hasOne('App\Setting', 'user_id');
+    }
+
+    public function dailygoal()
+    {
+        return $this->belongsTo('App\DailyGoal', 'dailygoal_id');
     }
 
     /**
@@ -207,10 +211,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             }
         });
     }
-
-    public function getThumbAttribute()
-    {
-        return GlideImage::load($this->picture, ['w' => 48, 'h' => 48])->getURL();
-    }
-
 }

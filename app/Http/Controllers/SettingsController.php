@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Activity;
+use App\DailyGoal;
 use App\Hour;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use League\Glide\Http\UrlBuilderFactory;
 use Spatie\Glide\GlideImage;
 
 class SettingsController extends Controller
@@ -29,7 +31,6 @@ class SettingsController extends Controller
     public function duosettingsaccount()
     {
         $user = Auth::user();
-        dd(GlideImage::load($user->picture, ['w'=>48, 'h'=>48]));
         $settings = $user->settings()->get()[0];
         $hours = Hour::all();
         return view('settings.account', compact('user', 'settings', 'hours'));
@@ -43,9 +44,7 @@ class SettingsController extends Controller
     public function duosettingsnotifications()
     {
         $user = Auth::user();
-        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-        $disable = false;
-        return view('settings.notifications', compact('user', 'activities', 'disable'));
+        return view('settings.notifications', compact('user'));
     }
 
     /**
@@ -56,9 +55,8 @@ class SettingsController extends Controller
     public function duosettingscoach()
     {
         $user = Auth::user();
-        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-        $disable = false;
-        return view('settings.coach', compact('user', 'activities', 'disable'));
+        $dailyGoals = DailyGoal::all();
+        return view('settings.coach', compact('user', 'dailyGoals'));
     }
 
     /**
@@ -119,6 +117,20 @@ class SettingsController extends Controller
         $user->save();
         $userSetting->save();
 
-        return response()->json(['status' => 'success', 'msg' => url('/img/'.(new GlideImage)->load($user->picture, ['w'=>48, 'h'=>48])->getUrl())]);
+        $urlBuilder = (new UrlBuilderFactory)->create('/img/', 'SomeRandomString');
+        $url = $urlBuilder->getUrl($user->picture, ['w'=>48, 'h'=>48]);
+
+        return response()->json(['status' => 'success', 'msg' => $url]);
+    }
+
+    public function coachsave(Request $request)
+    {
+
+        $user = Auth::user();
+        $dailyGoal = DailyGoal::find($request['daily_goal']);
+        $user->dailygoal()->associate($dailyGoal);
+        $user->save();
+        return response()->json(['status' => 'success', 'msg' => $dailyGoal->id]);
+
     }
 }

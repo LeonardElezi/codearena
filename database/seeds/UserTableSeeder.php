@@ -17,7 +17,8 @@ class UserTableSeeder extends Seeder
             'email' => 'me@leonardelezi.com',
             'password' => bcrypt('123456'),
             'picture' => 'maleavatarxlarge.jpeg',
-            'points' => 5
+            'points' => 5,
+            'dailygoal_id' => 1
         ]);
 
         DB::table('users')->insert([
@@ -26,7 +27,8 @@ class UserTableSeeder extends Seeder
             'email' => 'me@johnsmith.com',
             'password' => bcrypt('123456'),
             'picture' => 'defaultavatar.jpg',
-            'points' => 8
+            'points' => 8,
+            'dailygoal_id' => 1
         ]);
 
         DB::table('users')->insert([
@@ -35,7 +37,8 @@ class UserTableSeeder extends Seeder
             'email' => 'me@janedoe.com',
             'password' => bcrypt('123456'),
             'picture' => 'defaultavatar.jpg',
-            'points' => 10
+            'points' => 10,
+            'dailygoal_id' => 1
         ]);
 
         DB::table('users')->insert([
@@ -44,7 +47,8 @@ class UserTableSeeder extends Seeder
             'email' => 'me@test.com',
             'password' => bcrypt('123456'),
             'picture' => 'defaultavatar.jpg',
-            'points' => 2
+            'points' => 2,
+            'dailygoal_id' => 1
         ]);
     }
 }

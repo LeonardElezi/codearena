@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="<?php echo csrf_token() ?>" />
 
     <title>CodeArena: Learn refactoring patterns</title>
     <link rel="stylesheet" href="{{ asset("assets/stylesheets/home0.css") }}"/>
@@ -90,27 +91,24 @@
                 <div class="sub-text gray">Coach here! Selecting a daily goal will help you stay motivated while
                     learning refactoring. You can change your goal at any time.
                 </div>
-                <div class="coach-settings"><span class="owl owl-coach-small left"><img src="{{ GlideImage::load('coach.png', ['w'=>200, 'h'=>200]) }}"></span><span
-                            class="coach-goal-chooser left"><ul class="goal-chooser"><li><label
-                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
-                                            name="daily_goal" data-goal="1" type="radio"> <span
-                                            class="title">Basic</span> <span class="xp-text">1 XP per day</span></label></li><li><label
-                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
-                                            name="daily_goal" data-goal="10" type="radio"> <span
-                                            class="title">Casual</span> <span
-                                            class="xp-text">10 XP per day</span></label></li><li><label
-                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
-                                            name="daily_goal" data-goal="20" checked="checked" type="radio"> <span
-                                            class="title">Regular</span> <span
-                                            class="xp-text">20 XP per day</span></label></li><li><label
-                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
-                                            name="daily_goal" data-goal="30" type="radio"> <span
-                                            class="title">Serious</span> <span
-                                            class="xp-text">30 XP per day</span></label></li><li><label
-                                        class="btn btn-standard btn-small btn-outline daily-goal-option"><input
-                                            name="daily_goal" data-goal="50" type="radio"> <span
-                                            class="title">Insane</span> <span
-                                            class="xp-text">50 XP per day</span></label></li></ul></span></div>
+                <div class="coach-settings">
+                    <span class="owl owl-coach-small left"><img src="{{ GlideImage::load('coach.png', ['w'=>200, 'h'=>200]) }}"></span><span
+                            class="coach-goal-chooser left">
+                        <ul class="goal-chooser">
+                            @foreach($dailyGoals as $dg)
+                                @if($user->dailygoal()->get()[0]->id==$dg->id)
+                                    <li id="daily_goal"><label class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                                    name="daily_goal" data-goal="{{ $dg->id }}" type="radio" checked="checked"> <span
+                                                    class="title">{{ $dg->xptext }}</span> <span class="xp-text">{{ $dg->experience }} XP per day</span></label></li>
+                                @else
+                                    <li id="daily_goal"><label class="btn btn-standard btn-small btn-outline daily-goal-option"><input
+                                                    name="daily_goal" data-goal="{{ $dg->id }}" type="radio"> <span
+                                                    class="title">{{ $dg->xptext }}</span> <span class="xp-text">{{ $dg->experience }} XP per day</span></label></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </span>
+                </div>
             </div>
         </section>
         <div class="footer-main">
@@ -137,5 +135,55 @@
         </div>
     </main>
 </div>
+
+<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>
+<script type="application/javascript">
+    $(document).ready(function(){
+
+        $("#submit_button").click(function (e) {
+
+            var tok = $('meta[name="_token"]').attr('content');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
+            e.preventDefault();
+
+            var dataGoalId = $('input[name=daily_goal]:checked').data("goal");
+            if(dataGoalId){
+                var form_data = new FormData();
+                form_data.append('daily_goal', dataGoalId);
+
+                $.ajax({
+                    async: true,
+                    type: 'POST',
+                    contentType: false,
+                    url:'{{ url('/settings/coach/save') }}',
+                    data: form_data,
+                    processData: false,
+                    enctype:"multipart/form-data",
+                    success: function (data) {
+                        $('#confirmation-message').removeClass('hidden');
+                        setTimeout(function(){
+                            hideResultMessage($('#confirmation-message'));
+                        }, 2000);
+                    },
+                    error: function (data) {
+                        $('#error-message').removeClass('hidden');
+                        setTimeout(function(){
+                            hideResultMessage($('#error-message'));
+                        }, 2000);
+                    }
+                });
+            }
+            function hideResultMessage(elementToHide) {
+                elementToHide.addClass('hidden');
+            }
+        });
+    });
+</script>
 </body>
 </html>

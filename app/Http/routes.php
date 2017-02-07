@@ -22,6 +22,7 @@ Route::get('/duoprofile', 'HomeController@duoprofile');
 Route::get('/settings/account', 'SettingsController@duosettingsaccount');
 Route::get('/settings/notifications', 'SettingsController@duosettingsnotifications');
 Route::get('/settings/coach', 'SettingsController@duosettingscoach');
+Route::post('/settings/coach/save', 'SettingsController@coachsave');
 Route::post('/settings/save', 'SettingsController@save');
 Route::post('/settings/uavatar', 'SettingsController@uploadProfilePicture');
 

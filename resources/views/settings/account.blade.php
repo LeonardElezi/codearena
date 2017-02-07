@@ -35,7 +35,7 @@
                 <div class="dropdown topbar-username">
                     <div data-toggle="dropdown" class=""><a href="{{ url('/profile/'.$user->id) }}"
                                                             class="avatar avatar-small " title="leonardelezi"><img
-                                    src="{{ GlideImage::load($user->picture, ['w'=>295, 'h'=>295]) }}"><span class="ring"></span></a> <span
+                                    src="{{ GlideImage::load($user->picture, ['w'=>295, 'h'=>295]) }}" id="topBarPicture"><span class="ring"></span></a> <span
                                 class="name">{{ $user->first_name }} {{ $user->last_name }}</span><span class="icon icon-arrow-down-white"></span></div>
                     <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
                         <li><a href="{{ url('/profile/'.$user->id) }}">Your Profile</a></li>
@@ -70,7 +70,7 @@
             <div class="inner">
                 <div class="box-colored bg-white"><h2 class="view-profile-headline"><a
                                 href="{{ url('/profile/'.$user->id) }}" class="avatar avatar-small"
-                                title="leonardelezi"><img src="{{ GlideImage::load($user->picture, ['w'=>48, 'h'=>48]) }}"><span
+                                title="leonardelezi"><img src="{{ GlideImage::load($user->picture, ['w'=>48, 'h'=>48]) }}" id="sideBarPicture"><span
                                     class="ring"></span></a> {{ $user->email }} <a
                                 href="{{ url('/profile/'.$user->id) }}" class="username">View your profile</a></h2>
                     <ul id="settings_tab" class="nav-sidebar">
@@ -265,6 +265,8 @@
                         hideResultMessage($('#confirmation-message'));
                     }, 2000);
                     $('#profilePicToChange').attr("src", data.msg);
+                    $('#topBarPicture').attr("src", data.msg);
+                    $('#sideBarPicture').attr("src", data.msg);
                 },
                 error: function (data) {
                     $('#error-message').removeClass('hidden');
