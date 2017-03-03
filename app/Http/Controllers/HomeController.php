@@ -69,8 +69,13 @@ class HomeController extends Controller {
      */
     public function duolingo()
     {
-
-        return view('duohome');
+        $user = Auth::user();
+        $now = strtotime('now');
+        $midnight = strtotime('midnight');
+        $difference = $midnight - $now;
+        $timeToMidnight = date("H", $difference);
+        // TODO: make logic to see if user signed in today and completed his goal, if true don't show time to midnight
+        return view('duohome',compact('user', 'timeToMidnight'));
     }
 
     /**
@@ -117,16 +122,4 @@ class HomeController extends Controller {
         return view('duoles3');
     }
 
-    /**
-     * Show the application dashboard to the user.
-     *
-     * @return Response
-     */
-    public function duoprofile()
-    {
-        $user = Auth::user();
-        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-        $disable = false;
-        return view('duoprofile', compact('user', 'activities', 'disable'));
-    }
 }

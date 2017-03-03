@@ -1,81 +1,10 @@
-<!DOCTYPE html>
-<html class="" dir="ltr">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google" value="notranslate">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CodeArena: Learn refactoring patterns</title>
-    <link rel="stylesheet" href="{{ asset("assets/stylesheets/home0.css") }}" />
-    <link rel="stylesheet" href="{{ asset("assets/stylesheets/home1.css") }}" />
-    <link rel="stylesheet" href="{{ asset("assets/stylesheets/home2.css") }}" />
-</head>
-
-<body class="global-en compact-enabled" lang="en" style="overflow: auto;">
-    <div id="topbar">
-        <header class="topbar   topbar-blue">
-            <div class="container">
-                <a href="https://www.codearena.co/" class="topbar-brand navigate-home track-click white "></a>
-                <div id="global-loading-indicator" class="loading-indicator  " style="display: none;">
-                    <div class="loader"></div>
-                </div>
-                <nav class="topbar-nav">
-                    <ul class="topbar-nav-main">
-                        <li id="home-nav" class="active"><a href="https://www.codearena.co/">Home</a></li>
-                        <li id="stream-nav"><a href="https://www.codearena.co/activity_stream">Activity</a></li>
-                    </ul>
-                </nav>
-                <div class="topbar-right">
-                    <div class="hamburger"></div>
-                    <div class="dropdown topbar-username">
-                        <div data-toggle="dropdown" class="">
-                            <a href="https://www.codearena.co/leonardelezi" class="avatar avatar-small " title="leonardelezi"><img src="{{ asset("assets/Duolingo_Home_files/large") }}"><span class="ring"></span></a> <span class="name">leonardelezi</span><span class="icon icon-arrow-down-white"></span></div>
-                        <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
-                            <li><a href="https://www.codearena.co/leonardelezi">Your Profile</a></li>
-                            <li><a href="https://www.codearena.co/settings/account" class="track-click" id="header_userdrop_settings">Settings</a></li>
-                            <li><a href="https://www.codearena.co/help">Help</a></li>
-                            <li><a class="track-click" id="header_userdrop_logout">Logout</a></li>
-                        </ul>
-                    </div>
-                    <ul class="topbar-stats">
-                        <li class="streak" data-toggle="tooltip" title="0 day streak" data-placement="bottom"><span class="icon icon-streak-small "></span> 0</li>
-                        <li class="lingots" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Lingots"><a href="https://www.codearena.co/show_store"><span class="icon icon-lingot-small"></span><span id="num_lingots"> 91</span></a></li>
-                        <div class="tooltip fade bottom" style="top: 55px; left: 981.539px; display: block;">
-                            <div class="tooltip-arrow"></div>
-                            <div class="tooltip-inner">Lingots</div>
-                        </div>
-                        <li class="notifications"><button class="toggle-notifications btn btn-custom btn-notifications " data-placement="bottom" title=""><span class="icon icon-notification-small"></span></button>
-                            <div id="popover-notifications" class="popover notification-popover-content hidden" style="position:fixed;"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div id="logged-out-message" class="logged-out-message"></div>
-            </div>
-        </header>
-        <div id="mobile-menu" class="mobile-menu logged-in">
-            <ul class="mobile-menu-listing">
-                <div class="mobile-menu-stats"><span class="user-info"><a href="https://www.codearena.co/leonardelezi" class="avatar avatar-micro" title="leonardelezi"><img src="{{ asset("assets/Duolingo_Home_files/medium") }}"><span class="ring"></span></a> <span class="name">leonardelezi</span></span>
-                    <li class="streak" data-toggle="tooltip" title="0 day streak" data-placement="bottom"><span class="icon icon-streak-small "></span> 0</li>
-                    <li class="lingots" data-toggle="tooltip" title="Lingots" data-placement="bottom"><a href="https://www.codearena.co/show_store"><span class="icon icon-lingot-small"></span><span id="num_lingots"> 91</span></a></li>
-                </div>
-                <li id="home-nav" class="active"><a href="https://www.codearena.co/">Home</a></li>
-                <li id="courses-nav"><a href="https://www.codearena.co/courses">Courses</a></li>
-                <li id="settings-nav"><a href="https://www.codearena.co/settings">Settings</a></li>
-                <li><a href="https://www.codearena.co/logout">Log out</a></li>
-            </ul>
-        </div>
-        <div id="keyboard-shortcuts" class="modal keyboard-shortcuts fade"></div>
-        <div id="alert-modals"></div>
-    </div>
+@extends('layouts.duo')
+@section('app')
     <div id="app" class="home">
         <main class="main-right">
             <div id="persistent-notifications" class=""></div>
             <section class="page-main main-right">
-                <!-- TODO: Put the user level here -->
-                <div class="tree"><span class="skill-tree-header"><h1>Refactoring skills</h1><span class="level-text">LEVEL 100000000000000</span></span>
+                <div class="tree"><span class="skill-tree-header"><h1>Refactoring skills</h1><span class="level-text">LEVEL {{ $user->level }}</span></span>
                     <ul class="skill-tree">
                         <li class="skill-tree-row row-1"><span id="skill-2-1" class="skill-0"><a href="https://www.codearena.co/skill/dn/Basics-1" class="fade-this-in skill-badge-small skill-item" style="opacity: 1;"><span class="skill-icon  small  gold"><span class="skill-icon-image skill-icon-1"></span><span class="skill-icon-strength skill-icon-strength-small  strength-5"></span></span><span class="skill-badge-name">Extract Method<span class="lessons-left"></span></span>
                             </a>
@@ -294,16 +223,25 @@
             <section class="page-sidebar sidebar-left">
                 <div class="inner">
                     <div class="box-colored bg-white vocab-test ">
-                        <h2><a href="https://www.codearena.co/settings/coach"><span data-toggle="tooltip" title="Change daily goal" class="icon icon-gear-small right"></span></a>Daily Goal</h2>
+                        <h2><a href="{{ url('/settings/coach') }}"><span data-toggle="tooltip" title="Change daily goal" class="icon icon-gear-small right"></span></a>Daily Goal</h2>
                         <div class="daily-goal-container ">
-                            <div class="teacher-coach"><span class="owl owl-mini owl-standard"></span><span class="coach-message">Learning a language requires practice every day.</span></div>
-                            <div class="daily-donut-container"><span class="icon icon-daily-donut-streak "></span>
-                                <div id="daily-donut-text"><span class="stat-text">0/20</span> xp gained</div>
-                                <div id="daily-donut"><svg height="150" version="1.1" width="150" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><circle cx="75" cy="75" r="75" fill="#e2e2e2" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="75" cy="75" r="75" fill="#000000" stroke="none" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></circle><circle cx="75" cy="75" r="65" fill="#ffffff" stroke="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg></div>
+                            <div class="teacher-coach"><span class="owl owl-mini owl-standard"></span><span class="coach-message">Learning refactoring requires practice every day.</span></div>
+                            <div class="daily-donut-container">
+                                <span class="icon icon-daily-donut-streak "></span>
+                                <div id="daily-donut-text"><span class="stat-text">0/{{ $user->dailygoal()->get()[0]->experience}}</span> xp gained</div>
+                                <div id="daily-donut">
+                                    <svg height="150" version="1.1" width="150" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+                                        <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
+                                        <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+                                        <circle cx="75" cy="75" r="75" fill="#e2e2e2" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+                                        <circle cx="75" cy="75" r="75" fill="#000000" stroke="none" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></circle>
+                                        <circle cx="75" cy="75" r="65" fill="#ffffff" stroke="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="daily-goal-stats">
-                                <div class="stat-container"><span class="stat-text">0</span>day streak</div>
-                                <div class="stat-container"><span class="stat-text">13</span>hours left</div>
+                                <div class="stat-container"><span class="stat-text">{{ $user->day_streak }}</span>day streak</div>
+                                <div class="stat-container"><span class="stat-text">{{ $timeToMidnight }}</span>hours left</div>
                             </div>
                             <div id="assignments-container" class="assignments-placeholder-v2"></div>
                         </div>
@@ -368,4 +306,8 @@
             <div class="practice-container"><a href="https://www.codearena.co/practice" class="btn btn-primary btn-block btn-strengthen-skills">Strengthen skills</a></div>
         </main>
     </div>
-</html>
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+    </script>
+@stop

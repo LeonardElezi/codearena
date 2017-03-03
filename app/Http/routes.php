@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/duolingo', 'HomeController@duolingo');
+//Route::get('/', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@duolingo');
+Route::get('/home', 'HomeController@duolingo');
 Route::get('/chapter', 'HomeController@chapter');
 Route::get('/duoles1', 'HomeController@duoles1');
 Route::get('/duoles2', 'HomeController@duoles2');
 Route::get('/duoles3', 'HomeController@duoles3');
-Route::get('/duoprofile', 'HomeController@duoprofile');
+Route::get('/profile', 'ProfileController@duoprofile');
 Route::get('/settings/account', 'SettingsController@duosettingsaccount');
 Route::get('/settings/notifications', 'SettingsController@duosettingsnotifications');
 Route::get('/settings/coach', 'SettingsController@duosettingscoach');
@@ -29,7 +30,7 @@ Route::post('/settings/uavatar', 'SettingsController@uploadProfilePicture');
 Route::get('/users', 'UsersController@index');
 Route::post('/users/levelupdate', 'UsersController@updateLevels');
 
-Route::get('/profile', 'ProfileController@index');
+//Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/update', 'ProfileController@update');
 Route::post('/profile/edit', 'ProfileController@edit');
 Route::get('/profile/edituseride', 'ProfileController@editUsersIdes');

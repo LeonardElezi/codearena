@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->integer('points')->default(0);
 			$table->integer('level')->default(1);
 			$table->integer('rank')->default(0);
+			$table->integer('day_streak')->default(0);
 			$table->integer('login_count')->default(0);
             $table->integer('dailygoal_id')->unsigned();
 			$table->timestamp('last_login')->nullable();

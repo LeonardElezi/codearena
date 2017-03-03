@@ -288,4 +288,17 @@ class ProfileController extends Controller
 
         return redirect('profile');
     }
+
+    /**
+     * Show the application dashboard to the user.
+     *
+     * @return Response
+     */
+    public function duoprofile()
+    {
+        $user = Auth::user();
+        $activities = Activity::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $disable = false;
+        return view('duoprofile', compact('user', 'activities', 'disable'));
+    }
 }
