@@ -23,6 +23,13 @@ class DatabaseSeeder extends Seeder {
         $this->call('LevelTableSeeder');
         $this->call('CreateDayhoursTableSeeder');
         $this->call('SettingTableSeeder');
+        $this->call('RefactoringCategoryTypeSeeder');
+        $this->call('RefactoringSolutionSeeder');
+        $this->call('RefactoringHowToSeeder');
+        $this->call('RefactoringWhySeeder');
+        $this->call('RefactoringTechniqueSeeder');
+        $this->call('RefactoringUserTechniqueSeeder');
+        $this->call('RefactoringProblemSeeder');
         //$this->call('ChaptersTableSeeder');
 	}
 

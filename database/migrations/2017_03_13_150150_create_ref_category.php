@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSmellsTable extends Migration {
+class CreateRefCategory extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateSmellsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('smells', function(Blueprint $table)
+		Schema::create('refactoring_category', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('title');
-			$table->longText('description');
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
@@ -29,7 +29,7 @@ class CreateSmellsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('smells');
+		Schema::drop('refactoring_category');
 	}
 
 }

@@ -74,8 +74,10 @@ class HomeController extends Controller {
         $midnight = strtotime('midnight');
         $difference = $midnight - $now;
         $timeToMidnight = date("H", $difference);
+        $techniques = $user->techniques()->get();
+        //dd($techniques);
         // TODO: make logic to see if user signed in today and completed his goal, if true don't show time to midnight
-        return view('duohome',compact('user', 'timeToMidnight'));
+        return view('duohome',compact('user', 'timeToMidnight', 'techniques'));
     }
 
     /**
@@ -86,7 +88,8 @@ class HomeController extends Controller {
     public function chapter()
     {
 
-        return view('duochapter');
+        $user = Auth::user();
+        return view('lessons.duochapter', compact('user'));
     }
 
     /**
@@ -97,7 +100,8 @@ class HomeController extends Controller {
     public function duoles1()
     {
 
-        return view('duoles1');
+        $user = Auth::user();
+        return view('lessons.duoles1', compact('user'));
     }
 
     /**
@@ -108,7 +112,8 @@ class HomeController extends Controller {
     public function duoles2()
     {
 
-        return view('duoles2');
+        $user = Auth::user();
+        return view('lessons.duoles2', compact('user'));
     }
 
     /**
@@ -119,7 +124,8 @@ class HomeController extends Controller {
     public function duoles3()
     {
 
-        return view('duoles3');
+        $user = Auth::user();
+        return view('lessons.duoles3', compact('user'));
     }
 
 }

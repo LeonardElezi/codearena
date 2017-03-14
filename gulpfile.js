@@ -23,6 +23,7 @@ elixir(function(mix) {
     mix.copy('resources/assets/Duolingo_Home_files/6067fe68ddbb32b55d78e43059595ff6_mv_6717e2fbaada2600f9fa2d10ed06e505_0.min.css', 'public/assets/stylesheets/home0.css');
     mix.copy('resources/assets/Duolingo_Home_files/6067fe68ddbb32b55d78e43059595ff6_mv_6717e2fbaada2600f9fa2d10ed06e505_1.min.css', 'public/assets/stylesheets/home1.css');
     mix.copy('resources/assets/Duolingo_Home_files/6067fe68ddbb32b55d78e43059595ff6_mv_6717e2fbaada2600f9fa2d10ed06e505_2.min.css', 'public/assets/stylesheets/home2.css');
+    mix.copy('resources/assets/icon_sprite.svg', 'public/assets/stylesheets/icon_sprite.svg');
     mix.styles([
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/fontawesome/css/font-awesome.css',

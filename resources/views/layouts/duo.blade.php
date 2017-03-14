@@ -26,8 +26,8 @@
 <body class="global-en compact-enabled" style="overflow: auto;" lang="en">
 <div id="topbar">
     <header class="topbar   topbar-blue">
-        <div class="container"><a href="https://www.duolingo.com/"
-                                  class="topbar-brand navigate-home track-click white "></a>
+        <div class="container"><a href="{{ url('/') }}"
+                                  class="navigate-home track-click white "></a>
             <div id="global-loading-indicator" class="loading-indicator  " style="display: none;">
                 <div class="loader"></div>
             </div>

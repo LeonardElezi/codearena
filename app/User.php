@@ -132,6 +132,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\User', 'user_role', 'user_id', 'role_id');
     }
 
+    /**
+     * The refactoring techniques that belong to the user.
+     */
+    public function techniques()
+    {
+        return $this->belongsToMany('App\RefactoringTechniques', 'user_technique', 'user_id', 'technique_id')->withPivot('technique_strength', 'status', 'href_classes', 'span1_classes');;
+    }
+
     public function refactorings()
     {
         return $this->hasMany('App\Refactoring');

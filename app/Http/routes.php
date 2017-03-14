@@ -16,6 +16,7 @@
 Route::get('/', 'HomeController@duolingo');
 Route::get('/home', 'HomeController@duolingo');
 Route::get('/chapter', 'HomeController@chapter');
+Route::get('/techniques/{id}', 'TechniquesController@techniques');
 Route::get('/duoles1', 'HomeController@duoles1');
 Route::get('/duoles2', 'HomeController@duoles2');
 Route::get('/duoles3', 'HomeController@duoles3');
